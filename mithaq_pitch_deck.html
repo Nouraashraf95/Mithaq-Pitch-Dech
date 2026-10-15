@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mithaq Pitch Deck - Scando</title>
+
+    <!-- Google Fonts: Montserrat -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                    },
+                    colors: {
+                        scando: {
+                            blue: '#1c4ed8',   // Logo exact blue
+                            green: '#00c880',  // Logo exact mint/teal green
+                            teal: '#009688',   // Secondary gradient color
+                            light: '#f8fafc',  // Super light gray/blue for backgrounds
+                            text: '#334155',   // Slate 700 - soft dark for text (NO BLACK)
+                            heading: '#0f172a' // Slate 900 - for strong headings
+                        }
+                    },
+                    boxShadow: {
+                        'canva': '0 10px 40px -10px rgba(28, 78, 216, 0.08)',
+                        'canva-hover': '0 20px 50px -15px rgba(0, 200, 128, 0.15)'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #ffffff;
+            color: #334155;
+        }
+
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(28, 78, 216, 0.05);
+        }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #1c4ed8, #00c880);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .bg-gradient-soft {
+            background: linear-gradient(180deg, #f0f7ff 0%, #ffffff 100%);
+        }
+
+        .card-canva {
+            background: #ffffff;
+            border-radius: 24px;
+            box-shadow: 0 10px 40px -10px rgba(28, 78, 216, 0.05);
+            border: 1px solid rgba(241, 245, 249, 1);
+            transition: all 0.4s ease;
+        }
+
+        .card-canva:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px -15px rgba(0, 200, 128, 0.12);
+            border-color: rgba(0, 200, 128, 0.2);
+        }
+
+        @keyframes blob {
+            0% {
+                transform: translate(0px, 0px) scale(1);
+            }
+
+            33% {
+                transform: translate(30px, -50px) scale(1.1);
+            }
+
+            66% {
+                transform: translate(-20px, 20px) scale(0.9);
+            }
+
+            100% {
+                transform: translate(0px, 0px) scale(1);
+            }
+        }
+
+        .animate-blob {
+            animation: blob 7s infinite;
+        }
+
+        .animation-delay-2000 {
+            animation-delay: 2s;
+        }
+
+        .animation-delay-4000 {
+            animation-delay: 4s;
+        }
+    </style>
+</head>
+
+<body class="antialiased selection:bg-scando-green selection:text-white">
+
+    <nav class="fixed w-full z-50 glass-nav">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center min-h-[7rem] py-3">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center cursor-pointer" onclick="window.scrollTo(0,0)">
+                    <img class="h-36 w-auto object-contain" src="C:\Users\4\Downloads\logo.jpg" alt="Scando Logo">
+                </div>
+
+                <!-- Links -->
+                <div class="hidden lg:flex space-x-10 items-center">
+                    <a href="#problem"
+                        class="text-sm font-semibold text-scando-text hover:text-scando-green transition-colors">Problem
+                        & Solution</a>
+                    <a href="#market"
+                        class="text-sm font-semibold text-scando-text hover:text-scando-green transition-colors">Market
+                        Size</a>
+                    <a href="#pricing"
+                        class="text-sm font-semibold text-scando-text hover:text-scando-green transition-colors">Pricing</a>
+                    <a href="#roadmap"
+                        class="text-sm font-semibold text-scando-text hover:text-scando-green transition-colors">Roadmap</a>
+                    <a href="#financials"
+                        class="text-sm font-semibold text-scando-text hover:text-scando-green transition-colors">Financials</a>
+                </div>
+
+                <!-- Contact CTA (No Ask yet) -->
+                <div class="hidden md:block">
+                    <a href="#footer"
+                        class="text-scando-blue font-bold text-sm hover:text-scando-green transition-colors flex items-center gap-2">
+                        <i class="ph-bold ph-envelope-simple"></i> Contact Us
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="relative pt-40 pb-32 lg:pt-56 lg:pb-40 overflow-hidden bg-white">
+        <!-- Abstract Animated Blobs for Canva-like feel -->
+        <div
+            class="absolute top-20 left-10 md:left-1/4 w-72 h-72 md:w-96 md:h-96 bg-scando-blue/10 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob">
+        </div>
+        <div
+            class="absolute top-20 right-10 md:right-1/4 w-72 h-72 md:w-96 md:h-96 bg-scando-green/10 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-2000">
+        </div>
+        <div
+            class="absolute -bottom-8 left-1/2 -translate-x-1/2 w-72 h-72 md:w-96 md:h-96 bg-blue-50 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-4000">
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center flex flex-col items-center">
+
+            <!-- Executive Badge -->
+            <div
+                class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white border border-gray-100 text-scando-heading font-bold text-xs md:text-sm mb-8 shadow-sm tracking-wide">
+                <span class="relative flex h-2.5 w-2.5">
+                    <span
+                        class="animate-ping absolute inline-flex h-full w-full rounded-full bg-scando-green opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-scando-green"></span>
+                </span>
+                Executive Presentation 2026
+            </div>
+
+            <!-- Main Title with Gradient -->
+            <h1
+                class="text-6xl md:text-7xl lg:text-[5.5rem] font-black tracking-tight mb-6 text-scando-heading leading-[1.1]">
+                <span
+                    class="text-transparent bg-clip-text bg-gradient-to-r from-scando-blue to-scando-green">Mithaq</span>
+                <br class="hidden sm:block" /> Pitch Deck
+            </h1>
+
+            <!-- Value Proposition -->
+            <p class="mt-6 text-xl md:text-2xl text-scando-text max-w-3xl mx-auto mb-10 leading-relaxed font-medium">
+                The Smart, Hardware-Free Attendance & Lightweight HR Automation Platform for Egypt's 450,000+ Formal
+                SMEs.
+            </p>
+
+            <!-- Built By Scando (Integration of Logo) -->
+            <div
+                class="flex items-center justify-center gap-4 mb-12 bg-white/50 backdrop-blur-sm py-4 px-8 rounded-2xl border border-gray-50">
+                <span class="text-xs font-bold text-gray-400 uppercase tracking-widest">Built By</span>
+                <img class="h-24 md:h-28 w-auto object-contain" src="C:\Users\4\Downloads\logo.jpg" alt="Scando Logo">
+            </div>
+
+            <!-- Primary Action -->
+            <div class="flex justify-center w-full max-w-xs">
+                <a href="#problem"
+                    class="w-full bg-scando-heading text-white px-8 py-5 rounded-2xl font-bold text-lg hover:bg-scando-blue shadow-2xl shadow-slate-900/20 transition-all transform hover:-translate-y-1 hover:scale-105 flex items-center justify-center gap-3">
+                    Start Presentation <i class="ph-bold ph-arrow-right text-scando-green"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="problem" class="py-24 bg-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-20">
+                <h2 class="text-4xl md:text-5xl font-extrabold text-scando-heading leading-tight mb-6">
+                    Operational Chaos in SMEs
+                </h2>
+                <p class="text-scando-text text-lg">
+                    Traditional HR systems fail companies with 5 to 50 employees, leaving them vulnerable to financial
+                    leaks and legal penalties.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="card-canva p-10">
+                    <div
+                        class="w-16 h-16 rounded-2xl bg-blue-50 text-scando-blue flex items-center justify-center mb-6">
+                        <i class="ph-duotone ph-fingerprint text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-extrabold text-scando-heading mb-3">Hardware Failures</h3>
+                    <p class="text-scando-text leading-relaxed text-sm">Optical fingerprint readers break easily, cost
+                        up to 12,000 EGP to replace, and drain payroll through proxy buddy-punches.</p>
+                </div>
+                <div class="card-canva p-10">
+                    <div
+                        class="w-16 h-16 rounded-2xl bg-green-50 text-scando-green flex items-center justify-center mb-6">
+                        <i class="ph-duotone ph-hard-drives text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-extrabold text-scando-heading mb-3">Bloated Software</h3>
+                    <p class="text-scando-text leading-relaxed text-sm">Enterprise ERPs demand expensive USD licenses,
+                        require months of onboarding, and overcomplicate simple attendance needs.</p>
+                </div>
+                <div class="card-canva p-10">
+                    <div
+                        class="w-16 h-16 rounded-2xl bg-teal-50 text-scando-teal flex items-center justify-center mb-6">
+                        <i class="ph-duotone ph-scales text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-extrabold text-scando-heading mb-3">Compliance Chaos</h3>
+                    <p class="text-scando-text leading-relaxed text-sm">Managing casual leaves, holidays, and social
+                        insurance manually on WhatsApp leads to frequent errors under Law 12/2003.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="solution" class="py-24 bg-slate-50 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="flex flex-col lg:flex-row gap-16 items-center">
+                <div class="w-full lg:w-5/12">
+                    <h2 class="text-4xl md:text-5xl font-extrabold text-scando-heading mb-6 leading-tight">Smart,
+                        Hardware-Free Architecture</h2>
+                    <p class="text-scando-text text-lg leading-relaxed mb-8">Custom-engineered by Scando to eliminate
+                        manual work and hardware costs, unlocking defensible 80%+ gross margins.</p>
+                    <div class="p-6 bg-white rounded-2xl shadow-sm border border-gray-100 flex items-start gap-4">
+                        <i class="ph-fill ph-check-circle text-scando-green text-3xl mt-1"></i>
+                        <div>
+                            <h4 class="font-bold text-scando-heading mb-1">Market White Space</h4>
+                            <p class="text-sm text-scando-text">88% of target SMEs (5-50 staff) have no dedicated
+                                digital HR software.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w-full lg:w-7/12 grid sm:grid-cols-2 gap-6">
+                    <div class="card-canva p-8">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-blue-50 text-scando-blue flex items-center justify-center mb-5">
+                            <i class="ph-bold ph-map-pin text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-scando-heading">GPS Geofencing</h3>
+                        <p class="text-scando-text text-sm leading-relaxed">Staff punch attendance on their own phones
+                            inside geofenced branches, securely bound to their hardware ID.</p>
+                    </div>
+                    <div class="card-canva p-8 sm:translate-y-8">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-green-50 text-scando-green flex items-center justify-center mb-5">
+                            <i class="ph-bold ph-rocket-launch text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-scando-heading">24-Hour Setup</h3>
+                        <p class="text-scando-text text-sm leading-relaxed">Plug-and-play cloud setup. Business owners
+                            configure shifts and staff profiles in under one day.</p>
+                    </div>
+                    <div class="card-canva p-8 sm:-mt-4">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-teal-50 text-scando-teal flex items-center justify-center mb-5">
+                            <i class="ph-bold ph-file-pdf text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-scando-heading">Native Legal Engine</h3>
+                        <p class="text-scando-text text-sm leading-relaxed">Automated Law 12/2003 calendars, leave
+                            balances, encrypted PDF payslips, and 3-tier approvals.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="market" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-4xl md:text-5xl font-extrabold text-scando-heading leading-tight mb-6">Egypt's Massive
+                    SME Sector</h2>
+                <p class="text-scando-text text-lg">A highly scalable and untapped market ready for digital
+                    transformation.</p>
+            </div>
+
+            <div class="flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-20 max-w-6xl mx-auto">
+
+                <!-- Left: Concentric Circles Diagram -->
+                <div class="relative w-[340px] h-[340px] flex-shrink-0 group">
+                    <!-- TAM Circle (Outer) -->
+                    <div
+                        class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[340px] h-[340px] rounded-full border-[3px] border-gray-100 bg-gray-50 flex flex-col items-center pt-8 shadow-sm transition-all duration-500 group-hover:border-gray-200 z-10">
+                        <span class="text-gray-400 font-black text-2xl tracking-widest">TAM</span>
+                        <span class="text-scando-heading font-bold text-lg mt-1">3.8M+</span>
+                    </div>
+
+                    <!-- SAM Circle (Middle) -->
+                    <div
+                        class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[240px] h-[240px] rounded-full border-[3px] border-blue-100 bg-blue-50/80 flex flex-col items-center pt-8 shadow-md transition-all duration-500 group-hover:border-blue-200 group-hover:-translate-y-2 z-20 backdrop-blur-sm">
+                        <span class="text-scando-blue font-black text-2xl tracking-widest">SAM</span>
+                        <span class="text-scando-heading font-bold text-lg mt-1">450k</span>
+                    </div>
+
+                    <!-- SOM Circle (Inner) -->
+                    <div
+                        class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[140px] h-[140px] rounded-full border-[3px] border-green-100 bg-green-50 flex flex-col items-center justify-center shadow-lg transition-all duration-500 group-hover:border-green-200 group-hover:-translate-y-4 z-30 backdrop-blur-md">
+                        <span class="text-scando-green font-black text-2xl tracking-widest">SOM</span>
+                        <span class="text-scando-heading font-bold text-lg mt-1">30k</span>
+                    </div>
+                </div>
+
+                <!-- Right: Explanations -->
+                <div class="w-full lg:w-1/2 space-y-6">
+                    <!-- TAM Text -->
+                    <div class="card-canva p-6 pl-8 relative overflow-hidden">
+                        <div class="absolute left-0 top-0 bottom-0 w-2 bg-gray-200"></div>
+                        <div class="flex items-center justify-between mb-3">
+                            <h4 class="text-xl font-extrabold text-scando-heading">Total Addressable Market</h4>
+                            <span
+                                class="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-xs font-bold tracking-wider">TAM</span>
+                        </div>
+                        <p class="text-scando-text font-medium leading-relaxed"><span
+                                class="font-black text-scando-heading">3.8M+</span> Registered Private Establishments in
+                            Egypt.</p>
+                        <p class="text-sm text-gray-500 mt-2 font-medium">Represents the macro digital transformation
+                            tailwind employing over 12.6 million personnel.</p>
+                    </div>
+
+                    <!-- SAM Text -->
+                    <div class="card-canva p-6 pl-8 relative overflow-hidden">
+                        <div class="absolute left-0 top-0 bottom-0 w-2 bg-scando-blue"></div>
+                        <div class="flex items-center justify-between mb-3">
+                            <h4 class="text-xl font-extrabold text-scando-heading">Serviceable Addressable Market</h4>
+                            <span
+                                class="px-3 py-1 bg-blue-50 text-scando-blue rounded-full text-xs font-bold tracking-wider">SAM</span>
+                        </div>
+                        <p class="text-scando-text font-medium leading-relaxed"><span
+                                class="font-black text-scando-heading">450,000</span> Formal SMEs (5-50 Staff).</p>
+                        <p class="text-sm text-scando-blue mt-2 font-bold">Addressable ARR Potential: > 2.1 Billion EGP
+                        </p>
+                    </div>
+
+                    <!-- SOM Text -->
+                    <div class="card-canva p-6 pl-8 relative overflow-hidden">
+                        <div class="absolute left-0 top-0 bottom-0 w-2 bg-scando-green"></div>
+                        <div class="flex items-center justify-between mb-3">
+                            <h4 class="text-xl font-extrabold text-scando-heading">Serviceable Obtainable Market</h4>
+                            <span
+                                class="px-3 py-1 bg-green-50 text-scando-green rounded-full text-xs font-bold tracking-wider">SOM</span>
+                        </div>
+                        <p class="text-scando-text font-medium leading-relaxed"><span
+                                class="font-black text-scando-heading">30,000</span> Target Seats by Year 3.</p>
+                        <p class="text-sm text-gray-500 mt-2 font-medium">Targeted penetration in commercial hubs: New
+                            Cairo, Maadi, Nasr City, and Delta clusters.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="py-24 bg-scando-light">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-20">
+                <h2 class="text-4xl md:text-5xl font-extrabold text-scando-heading leading-tight mb-6">Simple, Scalable
+                    Pricing</h2>
+            </div>
+
+            <div class="flex flex-col md:flex-row justify-center items-stretch gap-8 max-w-4xl mx-auto">
+                <!-- Employee Tier -->
+                <div class="w-full md:w-1/2 card-canva p-12 flex flex-col items-center text-center">
+                    <div
+                        class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-blue-50 text-scando-blue mb-6">
+                        <i class="ph-fill ph-user text-3xl"></i>
+                    </div>
+                    <h4 class="text-2xl font-extrabold text-scando-heading">Employee Seat</h4>
+                    <div class="flex items-baseline justify-center gap-1 mt-4 mb-8">
+                        <span class="text-6xl font-black text-scando-blue">40</span>
+                        <span class="text-scando-text font-bold">EGP / mo</span>
+                    </div>
+                    <ul class="space-y-4 w-full text-left">
+                        <li class="flex items-center gap-3 text-scando-text font-medium"><i
+                                class="ph-bold ph-check text-scando-green text-xl"></i> Mobile App (iOS/Android)</li>
+                        <li class="flex items-center gap-3 text-scando-text font-medium"><i
+                                class="ph-bold ph-check text-scando-green text-xl"></i> GPS Punching & ID Binding</li>
+                        <li class="flex items-center gap-3 text-scando-text font-medium"><i
+                                class="ph-bold ph-check text-scando-green text-xl"></i> Self-serve Leave Requests</li>
+                    </ul>
+                </div>
+
+                <!-- HR Desk Tier -->
+                <div
+                    class="w-full md:w-1/2 card-canva p-12 flex flex-col items-center text-center border-t-8 border-t-scando-green transform md:-translate-y-4">
+                    <div
+                        class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-green-50 text-scando-green mb-6">
+                        <i class="ph-fill ph-desktop text-3xl"></i>
+                    </div>
+                    <h4 class="text-2xl font-extrabold text-scando-heading">HR Desk License</h4>
+                    <div class="flex items-baseline justify-center gap-1 mt-4 mb-8">
+                        <span class="text-6xl font-black text-scando-green">350</span>
+                        <span class="text-scando-text font-bold">EGP / mo</span>
+                    </div>
+                    <ul class="space-y-4 w-full text-left">
+                        <li class="flex items-center gap-3 text-scando-text font-medium"><i
+                                class="ph-bold ph-check text-scando-blue text-xl"></i> Full Web Admin Dashboard</li>
+                        <li class="flex items-center gap-3 text-scando-text font-medium"><i
+                                class="ph-bold ph-check text-scando-blue text-xl"></i> Multi-Branch Management</li>
+                        <li class="flex items-center gap-3 text-scando-text font-medium"><i
+                                class="ph-bold ph-check text-scando-blue text-xl"></i> Law 12/2003 Engine</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="roadmap" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-20">
+                <h2 class="text-4xl md:text-5xl font-extrabold text-scando-heading mb-6">36-Month Growth Roadmap</h2>
+                <p class="text-scando-text text-lg">Clear milestones and seat acquisition targets demonstrating
+                    realistic scale.</p>
+            </div>
+            <!-- MRR Chart (Full Width) -->
+            <div class="bg-white rounded-3xl shadow-card border border-slate-200 p-6 lg:p-8 fade-in lg:col-span-2">
+                <h4 class="text-xl font-bold text-scando-navy mb-6 text-center">Monthly Recurring Revenue (MRR) - 36
+                    Months</h4>
+                <div class="relative w-full" style="height: 350px;">
+                    <canvas id="mrrChart"></canvas>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Year 1 -->
+                <div class="card-canva p-10 relative overflow-hidden">
+                    <div class="text-scando-blue font-bold uppercase tracking-widest text-xs mb-4">Year 1</div>
+                    <div class="text-5xl font-black text-scando-heading mb-2">5,000</div>
+                    <div class="text-sm font-bold text-scando-text mb-6">Target Seats</div>
+                    <ul class="space-y-3 text-sm text-scando-text font-medium mb-6">
+                        <li class="flex items-start gap-2"><i
+                                class="ph-fill ph-caret-right text-scando-blue mt-0.5"></i> Penetration via Performance
+                            Marketing</li>
+                        <li class="flex items-start gap-2"><i
+                                class="ph-fill ph-caret-right text-scando-blue mt-0.5"></i> Direct B2B sales in Cairo &
+                            Giza</li>
+                    </ul>
+                    <div class="p-4 bg-green-50 text-scando-green rounded-xl flex items-center gap-2 font-bold text-sm">
+                        <i class="ph-fill ph-check-circle text-xl"></i> Breakeven Achieved
+                    </div>
+                </div>
+
+                <!-- Year 2 -->
+                <div
+                    class="card-canva p-10 relative overflow-hidden border-b-4 border-scando-blue transform md:-translate-y-4">
+                    <div class="text-scando-blue font-bold uppercase tracking-widest text-xs mb-4">Year 2</div>
+                    <div class="text-5xl font-black text-scando-blue mb-2">15,000</div>
+                    <div class="text-sm font-bold text-scando-text mb-6">Target Seats</div>
+                    <ul class="space-y-3 text-sm text-scando-text font-medium">
+                        <li class="flex items-start gap-2"><i
+                                class="ph-fill ph-caret-right text-scando-blue mt-0.5"></i> Rollout Phase 2 (Advances &
+                            Setup)</li>
+                        <li class="flex items-start gap-2"><i
+                                class="ph-fill ph-caret-right text-scando-blue mt-0.5"></i> Expand to Delta commercial
+                            clusters</li>
+                        <li class="flex items-start gap-2"><i
+                                class="ph-fill ph-caret-right text-scando-blue mt-0.5"></i> Optimize self-service
+                            funnels</li>
+                    </ul>
+                </div>
+
+                <!-- Year 3 -->
+                <div
+                    class="card-canva p-10 relative overflow-hidden border-b-4 border-scando-green transform md:-translate-y-8">
+                    <div class="text-scando-green font-bold uppercase tracking-widest text-xs mb-4">Year 3</div>
+                    <div class="text-5xl font-black text-scando-green mb-2">30,000</div>
+                    <div class="text-sm font-bold text-scando-text mb-6">Target Seats</div>
+                    <ul class="space-y-3 text-sm text-scando-text font-medium">
+                        <li class="flex items-start gap-2"><i
+                                class="ph-fill ph-caret-right text-scando-green mt-0.5"></i> Leading SME HR tool
+                            position</li>
+                        <li class="flex items-start gap-2"><i
+                                class="ph-fill ph-caret-right text-scando-green mt-0.5"></i> API integrations with
+                            accounting</li>
+                        <li class="flex items-start gap-2"><i
+                                class="ph-fill ph-caret-right text-scando-green mt-0.5"></i> Enterprise & telecom
+                            partnerships</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="financials" class="py-24 bg-scando-light">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-20">
+                <h2 class="text-4xl md:text-5xl font-extrabold text-scando-heading leading-tight mb-6">Financial
+                    Projections</h2>
+                <p class="text-scando-text text-lg">Projected growth emphasizing early breakeven and high long-term
+                    margins.</p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-10">
+                <!-- Users Forecast Chart -->
+                <div class="card-canva p-10">
+                    <h4 class="text-2xl font-extrabold text-scando-heading mb-2">Sales Forecast (Active Seats)</h4>
+                    <p class="text-sm text-scando-text mb-8 font-medium">Trajectory targeting <span
+                            class="text-scando-blue font-bold">30,000 paid active seats</span> by Year 3.
+                    </p>
+                    <div class="relative h-80 w-full">
+                        <canvas id="forecastChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Sales vs Cost Chart -->
+                <div class="card-canva p-10">
+                    <h4 class="text-2xl font-extrabold text-scando-heading mb-2">Sales Forecast vs Cost</h4>
+                    <p class="text-sm text-scando-text mb-8 font-medium">Clear illustration of <span
+                            class="text-scando-green font-bold bg-green-50 px-2 py-1 rounded">Year 1 Breakeven</span>.
+                    </p>
+                    <div class="relative h-80 w-full">
+                        <canvas id="salesCostChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="ask" class="py-24 bg-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="max-w-5xl mx-auto card-canva p-12 md:p-16 border-2 border-scando-blue">
+                <div class="text-center mb-16">
+                    <h2 class="text-5xl font-black mb-4 text-scando-heading">The Investment Ask</h2>
+                    <p class="text-scando-text text-lg font-medium">Financing Mithaq HR past the Year 1 breakeven point
+                        and into profitable scale.</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-16 items-center">
+
+                    <!-- Left: Numbers -->
+                    <div class="space-y-10 md:border-r border-gray-100 md:pr-12">
+                        <div>
+                            <p class="text-scando-blue font-bold uppercase tracking-wider text-sm mb-2">Pre-Seed Ask</p>
+                            <p class="text-6xl font-black text-scando-heading">1.56M <span
+                                    class="text-2xl text-scando-text font-bold">EGP</span></p>
+                        </div>
+                        <div>
+                            <p class="text-scando-green font-bold uppercase tracking-wider text-sm mb-2">Offered Equity
+                            </p>
+                            <p class="text-6xl font-black text-scando-heading">40.0%</p>
+                        </div>
+                    </div>
+
+                    <!-- Right: Use of Funds -->
+                    <div>
+                        <h3 class="text-2xl font-extrabold mb-8 text-scando-heading">
+                            Use of Funds
+                        </h3>
+
+                        <div class="space-y-8">
+                            <!-- Item 1 -->
+                            <div>
+                                <div class="flex justify-between items-end mb-3">
+                                    <span class="font-bold text-scando-heading text-sm">Growth Marketing (45%)</span>
+                                </div>
+                                <div class="w-full bg-gray-100 rounded-full h-3">
+                                    <div class="bg-scando-blue h-full rounded-full" style="width: 45%"></div>
+                                </div>
+                            </div>
+
+                            <!-- Item 2 -->
+                            <div>
+                                <div class="flex justify-between items-end mb-3">
+                                    <span class="font-bold text-scando-heading text-sm">B2B Field Sales (35%)</span>
+                                </div>
+                                <div class="w-full bg-gray-100 rounded-full h-3">
+                                    <div class="bg-scando-green h-full rounded-full" style="width: 35%"></div>
+                                </div>
+                            </div>
+
+                            <!-- Item 3 -->
+                            <div>
+                                <div class="flex justify-between items-end mb-3">
+                                    <span class="font-bold text-scando-heading text-sm">Servers & Buffer (20%)</span>
+                                </div>
+                                <div class="w-full bg-gray-100 rounded-full h-3">
+                                    <div class="bg-scando-teal h-full rounded-full" style="width: 20%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="footer" class="bg-slate-50 text-scando-text py-16 border-t border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-8">
+
+                <div class="flex items-center gap-6">
+                    <img class="h-40 w-auto object-contain" src="C:\Users\4\Downloads\logo.jpg" alt="Scando Logo">
+                    <div>
+                        <p class="font-black text-scando-heading text-xl tracking-tight">Mithaq HR</p>
+                        <p class="text-sm font-medium text-scando-text">Sustainable Practices for Business Growth</p>
+                    </div>
+                </div>
+
+                <div class="text-center md:text-right">
+                    <p class="font-extrabold text-scando-heading text-lg mb-3">Contact Scando</p>
+                    <div class="flex flex-col md:items-end gap-2">
+                        <a href="mailto:hello@scando.solutions"
+                            class="text-scando-blue hover:text-scando-green transition-colors font-semibold flex items-center gap-2">
+                            <i class="ph-bold ph-envelope-simple text-xl"></i> hello@scando.solutions
+                        </a>
+                        <a href="tel:+201551170880"
+                            class="text-scando-text hover:text-scando-blue transition-colors font-semibold flex items-center gap-2">
+                            <i class="ph-bold ph-phone text-xl"></i> +20 155 117 0880
+                        </a>
+                        <a href="https://www.scando.solutions" target="_blank"
+                            class="text-scando-text hover:text-scando-blue transition-colors font-semibold flex items-center gap-2 mt-1">
+                            <i class="ph-bold ph-globe text-xl"></i> www.scando.solutions
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        window.onload = function () {
+            Chart.defaults.font.family = 'Montserrat';
+            Chart.defaults.color = '#334155';
+
+            const tooltipOptions = {
+                backgroundColor: '#0f172a',
+                titleFont: { size: 14, weight: 'bold' },
+                bodyFont: { size: 14 },
+                padding: 12,
+                cornerRadius: 12,
+            };
+
+            // Generate 36-Month Data (Linear scale to 5k, 15k, 30k seats)
+            const months = Array.from({ length: 36 }, (_, i) => `Month ${i + 1}`);
+            const usersData = [];
+            for (let i = 1; i <= 36; i++) {
+                if (i <= 12) {
+                    usersData.push(Math.round((5000 / 12) * i)); // Year 1: 5,000 seats
+                } else if (i <= 24) {
+                    usersData.push(Math.round(5000 + (10000 / 12) * (i - 12))); // Year 2: 15,000 seats
+                } else {
+                    usersData.push(Math.round(15000 + (15000 / 12) * (i - 24))); // Year 3: 30,000 seats
+                }
+            }
+            // MRR Calculation based on ~54 EGP blended ARPU (40 EGP/user + HR desk ratio):
+            const mrrData = usersData.map(users => users * 54);
+
+            // Monthly Recurring Revenue (MRR) - 36 Months Chart
+            const ctxMrr = document.getElementById('mrrChart').getContext('2d');
+            let mrrGradient = ctxMrr.createLinearGradient(0, 0, 0, 320);
+            mrrGradient.addColorStop(0, 'rgba(28, 78, 216, 0.25)');
+            mrrGradient.addColorStop(1, 'rgba(28, 78, 216, 0.0)');
+
+            new Chart(ctxMrr, {
+                type: 'line',
+                data: {
+                    labels: months,
+                    datasets: [{
+                        label: 'MRR (EGP)',
+                        data: mrrData,
+                        borderColor: '#1c4ed8', // Scando Blue
+                        backgroundColor: mrrGradient,
+                        borderWidth: 3,
+                        pointRadius: 0,
+                        pointHoverRadius: 6,
+                        pointHoverBackgroundColor: '#00c880', // Scando Green
+                        pointHoverBorderColor: '#ffffff',
+                        pointHoverBorderWidth: 2,
+                        fill: true,
+                        tension: 0.35
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    interaction: { mode: 'index', intersect: false },
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            backgroundColor: '#0f172a',
+                            padding: 12,
+                            cornerRadius: 10,
+                            titleFont: { size: 13, weight: 'bold' },
+                            bodyFont: { size: 13 },
+                            callbacks: {
+                                label: function (context) {
+                                    return new Intl.NumberFormat('en-EG', { style: 'currency', currency: 'EGP', maximumFractionDigits: 0 }).format(context.raw);
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            grid: { display: false },
+                            ticks: {
+                                font: { weight: '600' },
+                                maxTicksLimit: 12,
+                                callback: function (val, index) {
+                                    return (index + 1) % 3 === 0 || index === 0 ? `M${index + 1}` : '';
+                                }
+                            }
+                        },
+                        y: {
+                            beginAtZero: true,
+                            grid: { color: '#f1f5f9' },
+                            ticks: {
+                                font: { weight: '600' },
+                                callback: function (val) { return (val / 1000) + 'k'; }
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Sales Forecast (Active Seats) Chart
+            const ctxForecast = document.getElementById('forecastChart').getContext('2d');
+            new Chart(ctxForecast, {
+                type: 'bar',
+                data: {
+                    labels: ['Year 1', 'Year 2', 'Year 3'],
+                    datasets: [{
+                        label: 'Active Employees (Seats)',
+                        data: [5000, 15000, 30000],
+                        backgroundColor: '#00c880', // Scando Green
+                        borderRadius: 8,
+                        barPercentage: 0.45
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            backgroundColor: '#0f172a',
+                            padding: 12,
+                            cornerRadius: 10,
+                            bodyFont: { size: 13, weight: 'bold' },
+                            callbacks: {
+                                label: function (context) {
+                                    return new Intl.NumberFormat('en-US').format(context.raw) + ' Seats';
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: { grid: { display: false }, ticks: { font: { weight: 'bold' } } },
+                        y: {
+                            beginAtZero: true,
+                            grid: { color: '#f1f5f9' },
+                            ticks: {
+                                font: { weight: '600' },
+                                callback: function (val) { return (val / 1000) + 'k'; }
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Sales vs Cost Chart
+            const ctxSalesCost = document.getElementById('salesCostChart').getContext('2d');
+            new Chart(ctxSalesCost, {
+                type: 'bar',
+                data: {
+                    labels: ['Year 1', 'Year 2', 'Year 3'],
+                    datasets: [
+                        {
+                            label: 'Sales Forecast',
+                            data: [1600000, 6400000, 14500000],
+                            backgroundColor: '#1c4ed8', // Scando Blue
+                            borderRadius: 8,
+                            barPercentage: 0.5,
+                        },
+                        {
+                            label: 'Operating Costs',
+                            data: [1500000, 3800000, 6000000],
+                            backgroundColor: '#00c880', // Scando Green
+                            borderRadius: 8,
+                            barPercentage: 0.5,
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                            labels: { usePointStyle: true, boxWidth: 8, font: { weight: 'bold' } }
+                        },
+                        tooltip: tooltipOptions
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: { color: '#f1f5f9' },
+                            ticks: { font: { weight: '600' } }
+                        },
+                        x: {
+                            grid: { display: false },
+                            ticks: { font: { weight: 'bold' } }
+                        }
+                    }
+                }
+            });
+        };
+    </script>
+</body>
+
+</html>
